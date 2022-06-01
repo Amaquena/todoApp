@@ -1,0 +1,14 @@
+# SQL connection vars
+database:
+  username: root
+  password: root
+  hostname: localhost
+  port: 3306
+  dbName: todoApp
+application:
+  logLevel: info
+  mockStorage: false
+  requestTimeout: 10
+server:
+  host:
+  port: 9001

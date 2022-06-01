@@ -1,0 +1,80 @@
+syntax = "proto3";
+package todoapp;
+
+option go_package = "github.com/todoApp/proto";
+
+import "validate/validate.proto";
+
+message Item {
+  uint32 id = 1;
+  string description = 2 [(validate.rules).string.max_len = 255];
+  bool completed = 3;
+}
+
+service TodoAppAPI {
+  // Add an item
+  rpc AddItem(AddItemRequest) returns (AddItemResponse) {};
+
+  // Get single Item
+  rpc GetItem(GetSingleItemRequest) returns (GetSingleItemResponse) {};
+
+  // Get All items
+  rpc GetAllItems(GetAllItemsRequest) returns (GetAllItemsResponse) {};
+
+  // Update an Item Description
+  rpc UpdateItemDescription(UpdateItemDescriptionRequest) returns (UpdateItemDescriptionResponse) {};
+
+  // Update an Item Completion
+  rpc UpdateItemCompletion(UpdateItemCompletionRequest) returns (UpdateItemCompletionResponse) {};
+
+  // Delete an Item
+  rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse) {};
+}
+
+message AddItemRequest {
+  Item item = 1 [(validate.rules).message.required = true];
+}
+
+message AddItemResponse {
+  Item item = 1;
+}
+
+message GetSingleItemRequest {
+  uint32 id = 1;
+}
+
+message GetSingleItemResponse {
+  Item item = 1;
+}
+
+message GetAllItemsRequest {}
+
+message GetAllItemsResponse {
+  repeated Item items = 1;
+}
+
+message UpdateItemDescriptionRequest {
+  uint32 id = 1;
+  string description = 2;
+}
+
+message UpdateItemDescriptionResponse {
+  Item item = 1;
+}
+
+message UpdateItemCompletionRequest {
+  uint32 id = 1;
+  bool completed = 2;
+}
+
+message UpdateItemCompletionResponse {
+  Item item = 1;
+}
+
+message DeleteItemRequest {
+  uint32 id = 1;
+}
+
+message DeleteItemResponse {
+  Item item = 1;
+}
