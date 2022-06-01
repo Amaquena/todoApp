@@ -18,4 +18,17 @@ make vendor
 make run
 ```
 
-## Testing
+## TODO
+
+1. Implement client component
+2. enable caching
+3. add TLS and mTLS
+4. Create Dockerfile
+5. Create Docker-compose file
+6. Create a helm chart
+7. Add terraform and terragrunt
+8. Add monitoring
+9. Add Swagger docs, godocs etc.
+10. Add Ci/CD pipelines
+11. And automation tests
+
